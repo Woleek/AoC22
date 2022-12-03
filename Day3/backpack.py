@@ -14,6 +14,14 @@ def load_input(file_path: str) -> list:
         return file.read().split('\n')
 
 def find_same_item(backpack: str) -> str:
+    """Finds common item in two compartments of backpack
+
+    Args:
+        backpack (str): items in backpack
+
+    Returns:
+        str: common item
+    """
     first_compartment, second_compartment = set(backpack[:int(len(backpack)/2)]), \
                                             set(backpack[int(len(backpack)/2):])
 
@@ -22,13 +30,29 @@ def find_same_item(backpack: str) -> str:
     return common_item
 
 def prioritize(item:str) -> int:
+    """Calculates priority of an item
+
+    Args:
+        item (str): item name
+
+    Returns:
+        int: calcu;ated priority
+    """
     if str(item).islower():
-        value = ord(item) - 96
+        value = ord(item) - 96 # a-z: 1-27
     else:
-        value = ord(item) - 38
+        value = ord(item) - 38 # A-Z: 28-52
     return value
 
 def identify_group(*group_backpacks:str) -> str:
+    """Identifies common item for group of three backpacks
+
+    Args:
+        group_backpacks (tuple[str]): group of backpacks
+
+    Returns:
+        str: common item (badge) for group
+    """
     backpack_1 = set(group_backpacks[0])
     backpack_2 = set(group_backpacks[1])
     backpack_3 = set(group_backpacks[2])
