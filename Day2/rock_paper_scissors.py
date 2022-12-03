@@ -116,6 +116,6 @@ def predict_strategy(strategy: list) -> list:
 
 if __name__ == '__main__':
     strategy_list = load_input(INPUT_FILE)
-    print(play_rps(strategy_list))
-    print(play_rps(predict_strategy(strategy_list)))
+    print(f"Part 1 answer: {play_rps(strategy_list)}")
+    print(f"Part 2 answer: {play_rps(predict_strategy(strategy_list))}")
     

@@ -73,5 +73,5 @@ def get_three_most_caories(elves: dict) -> int:
 if __name__ == "__main__":
     items_list = load_input(INPUT_FILE)
     elves_packed = pack_elves(items_list)
-    print(get_most_calories(elves_packed))
-    print(get_three_most_caories(elves_packed))
+    print(f"Part 1 answer: {get_most_calories(elves_packed)}")
+    print(f"Part 2 answer: {get_three_most_caories(elves_packed)}")
