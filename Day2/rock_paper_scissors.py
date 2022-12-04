@@ -11,7 +11,7 @@ def load_input(file_path: str) -> list:
         list: list of file contents line by line
     """
     with open(file_path, mode='r', encoding="UTF-8") as file:
-        return file.read().split('\n')
+        return file.read().rstrip().split('\n')
     
 def play_rps(strategy:list) -> int:
     """Calculates total score for playing rock-paper-scissors tournament  with given strategy
@@ -92,26 +92,25 @@ def predict_strategy(strategy: list) -> list:
     Returns:
         list: new strategy list
     """
-    predicted_strategy = [play[:2] for play in strategy if play]
+    predicted_strategy = [play[:2] for play in strategy]
     for idx, play in enumerate(strategy):
-        if play:
-            oponents_play, expected_result = play.split(' ')
-            match expected_result:
-                case 'X': # lose
-                    match oponents_play:
-                        case 'A': predicted_strategy[idx] += 'Z'
-                        case 'B': predicted_strategy[idx] += 'X'
-                        case 'C': predicted_strategy[idx] += 'Y'
-                case 'Y': # tie
-                    match oponents_play:
-                        case 'A': predicted_strategy[idx] += 'X'
-                        case 'B': predicted_strategy[idx] += 'Y'
-                        case 'C': predicted_strategy[idx] += 'Z'
-                case 'Z': # win
-                    match oponents_play:
-                        case 'A': predicted_strategy[idx] += 'Y'
-                        case 'B': predicted_strategy[idx] += 'Z'
-                        case 'C': predicted_strategy[idx] += 'X'
+        oponents_play, expected_result = play.split(' ')
+        match expected_result:
+            case 'X': # lose
+                match oponents_play:
+                    case 'A': predicted_strategy[idx] += 'Z'
+                    case 'B': predicted_strategy[idx] += 'X'
+                    case 'C': predicted_strategy[idx] += 'Y'
+            case 'Y': # tie
+                match oponents_play:
+                    case 'A': predicted_strategy[idx] += 'X'
+                    case 'B': predicted_strategy[idx] += 'Y'
+                    case 'C': predicted_strategy[idx] += 'Z'
+            case 'Z': # win
+                match oponents_play:
+                    case 'A': predicted_strategy[idx] += 'Y'
+                    case 'B': predicted_strategy[idx] += 'Z'
+                    case 'C': predicted_strategy[idx] += 'X'
     return predicted_strategy
 
 if __name__ == '__main__':

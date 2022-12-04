@@ -12,7 +12,7 @@ def load_input(file_path: str) -> list:
         list: list of file contents line by line
     """
     with open(file_path, mode='r', encoding="UTF-8") as file:
-        return file.read().split('\n')
+        return file.read().rstrip().split('\n')
 
 
 def pack_elves(items: list) -> dict:

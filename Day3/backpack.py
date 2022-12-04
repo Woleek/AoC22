@@ -11,7 +11,7 @@ def load_input(file_path: str) -> list:
         list: list of file contents line by line
     """
     with open(file_path, mode='r', encoding="UTF-8") as file:
-        return file.read().split('\n')
+        return file.read().rstrip().split('\n')
 
 def find_same_item(backpack: str) -> str:
     """Finds common item in two compartments of backpack
@@ -63,7 +63,7 @@ def identify_group(*group_backpacks:str) -> str:
 
 if __name__ == '__main__':
     backpacks = load_input(INPUT_FILE)
-    misplaced_items = [find_same_item(backpack) for backpack in backpacks if backpack]
+    misplaced_items = [find_same_item(backpack) for backpack in backpacks]
     sum_of_priorities = sum(prioritize(item) for item in misplaced_items)
     print(f"Part 1 answer: {sum_of_priorities}")
     group_badges = [identify_group(backpacks[idx], backpacks[idx+1], backpacks[idx+2])
