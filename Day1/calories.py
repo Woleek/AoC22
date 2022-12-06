@@ -1,5 +1,5 @@
 """Advent of Code 2022 - Day 1 Solution"""
-INPUT_FILE = r"Day1\input.txt"
+INPUT_FILE = "Day1/input.txt"
 
 
 def load_input(file_path: str) -> list:

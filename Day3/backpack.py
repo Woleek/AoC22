@@ -1,5 +1,6 @@
 """Advent of Code 2022 - Day 3 Solution"""
-INPUT_FILE = r"Day3\input.txt"
+INPUT_FILE = "Day3/input.txt"
+
 
 def load_input(file_path: str) -> list:
     """Loads input data from txt file
@@ -13,6 +14,7 @@ def load_input(file_path: str) -> list:
     with open(file_path, mode='r', encoding="UTF-8") as file:
         return file.read().rstrip().split('\n')
 
+
 def find_same_item(backpack: str) -> str:
     """Finds common item in two compartments of backpack
 
@@ -23,13 +25,14 @@ def find_same_item(backpack: str) -> str:
         str: common item
     """
     first_compartment, second_compartment = set(backpack[:int(len(backpack)/2)]), \
-                                            set(backpack[int(len(backpack)/2):])
+        set(backpack[int(len(backpack)/2):])
 
     common_item = first_compartment & second_compartment
     common_item = ''.join(common_item)
     return common_item
 
-def prioritize(item:str) -> int:
+
+def prioritize(item: str) -> int:
     """Calculates priority of an item
 
     Args:
@@ -39,12 +42,13 @@ def prioritize(item:str) -> int:
         int: calcu;ated priority
     """
     if str(item).islower():
-        value = ord(item) - 96 # a-z: 1-27
+        value = ord(item) - 96  # a-z: 1-27
     else:
-        value = ord(item) - 38 # A-Z: 28-52
+        value = ord(item) - 38  # A-Z: 28-52
     return value
 
-def identify_group(*group_backpacks:str) -> str:
+
+def identify_group(*group_backpacks: str) -> str:
     """Identifies common item for group of three backpacks
 
     Args:
@@ -61,6 +65,7 @@ def identify_group(*group_backpacks:str) -> str:
     badge = ''.join(badge)
     return badge
 
+
 if __name__ == '__main__':
     backpacks = load_input(INPUT_FILE)
     misplaced_items = [find_same_item(backpack) for backpack in backpacks]
@@ -70,4 +75,3 @@ if __name__ == '__main__':
                     for idx in range(0, len(backpacks)-1, 3)]
     sum_of_group_priorities = sum(prioritize(badge) for badge in group_badges)
     print(f"Part 2 answer: {sum_of_group_priorities}")
-    
