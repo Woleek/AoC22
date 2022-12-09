@@ -113,6 +113,6 @@ def find_max_scenic_score(grid: np.ndarray) -> int:
 if __name__ == '__main__':
     input_lines = load_input(INPUT_FILE)
     forrest = input_to_matrix(input_lines)
-    print(count_visible(forrest))
-    print(find_max_scenic_score(forrest))
+    print(f"Part 1 answer: {count_visible(forrest)}")
+    print(f"Part 2 answer: {find_max_scenic_score(forrest)}")
     
